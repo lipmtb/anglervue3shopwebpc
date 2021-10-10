@@ -1,51 +1,19 @@
 import { createStore } from 'vuex'
 
-
-let users={
-  state: {
-    userName:""
-  },
-  getters:{
-    userName(state){
-      return state.userName;
-    }
-  },
-  mutations: {
-      loginUser(state,payload){
-      
-      }
-  },
-  actions: {
-    loginHandle(ctx,payload){
-   
-    
-    }
-  }
-}
-
-let goods={
-  state: {
-    cartLists:[]
-  },
-  getters:{
-    cartLists(){
-      return state.cartLists;
-    }
-  },
-  mutations: {
-    addCart(state,payload){
-      
-    }
-  },
-  actions: {
-  }
-}
-
+import createPersistedState from "vuex-persistedstate"
+import user from "./user";
+import category from './category';
+import cart from './cart';
 
 export default createStore({
   
   modules: {
-    users,
-    goods
-  }
+    user,
+    cart,
+    category
+  },
+  plugins:[createPersistedState({
+    key:"jjccdata",
+    paths:["user","cart"]   //只针对这两个作自动持久化localStorage
+  })]
 })
