@@ -15,11 +15,14 @@ const routes = [
     },{
       name:"subcategory",
       path:"/category/sub/:subid",
-      component:()=>import("@/views/category/sub/subcategory.vue")
+      component:()=>import("@/views/category/sub")
     },{
       name:"product",
       path:"/product/:productId",
       component:()=>import("@/views/product")
+    },{
+      path:"/cartPage",
+      component:()=>import("@/views/cartPage")
     }]
   },
   {

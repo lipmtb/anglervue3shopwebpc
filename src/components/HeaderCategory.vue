@@ -18,9 +18,9 @@
 
       <!-- 购物车 -->
       <div class="cart">
-        <a class="curr" href="#">
-          <i class="iconfont icon-cart"></i><em>2</em>
-        </a>
+        <RouterLink class="curr" to="/cartPage">
+          <i class="iconfont icon-cart"></i><em>{{cartCount}}</em>
+        </RouterLink>
       </div>
     </div>
   </header>
@@ -31,8 +31,8 @@
 import NavCategory from "@/components/content/NavCategory.vue";
 import srollFixNav from "@/hooks/scrollFix.js";
 
-import {inject} from "vue";
-
+import {inject,computed} from "vue";
+import {useStore} from "vuex";
 export default {
   name: "HeaderCategory",
   components: {
@@ -43,11 +43,17 @@ export default {
   // 滚动固定nav hooks
      let {isFix,isSlideDown}=srollFixNav();
      let topCateAll=inject("topCateAll");
-  
+
+
+    let store=useStore();
+    let cartCount=computed(()=>{
+      return store.getters.userCartLists.length;
+    })
     return {
       topCateAll,
       isFix,
-      isSlideDown
+      isSlideDown,
+      cartCount
     };
   }
 };
@@ -105,6 +111,18 @@ div.search,
 div.cart {
   float: left;
   margin-top: 35px;
+  em{
+     font-style:normal;
+     position:relative;
+     left:2px;
+     top:-4px;
+     background-color:#f00;
+     color:#fff;
+     border-radius: 8px;
+     display:inline-block;
+     line-height: 9px;
+     padding:2px 5px;
+  }
 }
 
 //搜索

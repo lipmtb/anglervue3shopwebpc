@@ -32,10 +32,14 @@ div.sortItemGood {
      width: 160px;
      height: 160px;
     }
+    >p {
+      margin:4px 0;
+    }
     > p.goodname{
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
+      font-size:1.1em;
     }
 
     > p.gooddesc{
